@@ -1,0 +1,3 @@
+.nav ul{
+    display: flex; /* 무조건 1행 수평으로 정렬 */
+}
