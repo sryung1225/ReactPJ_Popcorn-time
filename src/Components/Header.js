@@ -51,4 +51,3 @@ export default withRouter(({ location : { pathname } }) => (
         </List>
     </Header>
 ));
-
