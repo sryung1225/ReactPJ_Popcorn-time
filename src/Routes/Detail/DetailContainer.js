@@ -31,11 +31,10 @@ export default class extends React.Component {
         let result = null;
         try{
             if (isMovie) {
-                const request = await movieApi.movieDetail(parseId);
-                result = request.data;
+                //const { data: result } = await movieApi.movieDetail(parseId); 와 동일
+                ({ data: result } = await movieApi.movieDetail(parseId));
             } else {
-                const request = await tvApi.showDetail(parseId);
-                result = request.data;
+                ({ data: result } = await tvApi.showDetail(parseId));
             }
         } catch {
             this.setState({ error: "Can't find anything." })
@@ -47,6 +46,7 @@ export default class extends React.Component {
 
     render() {
         const { result, error, loading} = this.state;
+        // console.log(result);
         return (
             <DetailPresenter  
                 result={result}
