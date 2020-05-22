@@ -12,7 +12,7 @@ export const movieApi = {
     nowPlaying: () => api.get("movie/now_playing"),
     upcoming: () => api.get("movie/upcoming"),
     popular: () => api.get("movie/popular"),
-    movieDetail: id => 
+    movieDetail: id => // 인자가 있는 경우
         api.get(`movie/${id}`, {
             params: {
                 append_to_response: "videos"

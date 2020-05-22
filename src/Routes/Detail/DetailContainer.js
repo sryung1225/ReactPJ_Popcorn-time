@@ -19,7 +19,7 @@ export default class extends React.Component {
     async componentDidMount () {
         const {
             match: {
-                params: { id }
+                params: { id } // 원하는 객체가 props 전체가 아니라 match 안에 있는 params 안에 있는 id
             },
             history: { push }
         } = this.props;
@@ -27,7 +27,7 @@ export default class extends React.Component {
         const parseId = parseInt(id);
         if (isNaN(parseId)) {
             return push("/");
-        }
+        } // id가 숫자가 아니면 Home으로 바꿈(강제이동)
         let result = null;
         try{
             if (isMovie) {
@@ -36,7 +36,7 @@ export default class extends React.Component {
             } else {
                 ({ data: result } = await tvApi.showDetail(parseId));
             }
-        } catch {
+        } catch { 
             this.setState({ error: "Can't find anything." })
         } finally {
             this.setState({ loading: false, result })

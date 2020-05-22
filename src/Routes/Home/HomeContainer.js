@@ -15,7 +15,7 @@ export default class extends React.Component {
         try{
             const { 
                 data: { results: nowPlaying }
-            } = await movieApi.nowPlaying();
+            } = await movieApi.nowPlaying(); //data 안에 results 안에 nowPlaying를 가져와 변수 nowPlaying안에 넣어줌
             //console.log(nowPlaying);
             const { 
                 data: { results: upcoming }

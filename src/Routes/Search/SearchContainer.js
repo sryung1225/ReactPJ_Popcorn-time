@@ -11,12 +11,12 @@ export default class extends React.Component {
         error: null
     };
 
-    handleSubmit = () => {
+    handleSubmit = () => { // 검색어를 제출하는 함수
         const { searchTerm } = this.state;
         if (searchTerm !== "") {
             this.searchByTerm();
         }
-    };
+    }; 
 
     searchByTerm = async() => {
         const { searchTerm } = this.state;

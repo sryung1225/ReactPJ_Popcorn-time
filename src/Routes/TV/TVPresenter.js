@@ -9,7 +9,27 @@ const Container = styled.div`
 `;
 
 const TVPresenter = ({ topRated, popular, airingToday, loading, error }) => 
-    null;
+    loading ? (
+        <Loader /> // loading 화면
+    ) : (
+    <Container> {/* loading 중이 아닐 때 */}
+        {topRated && topRated.length > 0 && (
+            <Section title="Top Rated Shows">
+                {topRated.map(show => show.name)}
+            </Section>
+        )}
+        {popular && popular.length > 0 && (
+            <Section title="Popular Shows">
+                {popular.map(show => show.name)}
+            </Section>
+        )}
+        {airingToday && airingToday.length > 0 && (
+            <Section title="Airing Today">
+                {airingToday.map(show => show.name)}
+            </Section>
+        )}
+    </Container>
+  );
 
 
 TVPresenter.propTypes = {

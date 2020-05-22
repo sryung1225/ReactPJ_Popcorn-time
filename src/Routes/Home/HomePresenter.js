@@ -9,21 +9,29 @@ const Container = styled.div`
 `;
 
 const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => 
-    loading ? null : (
-    <Container>
+    loading ? (       
+        <Loader /> // loading 중일 때 => Loader 화면
+    ) : (
+    <Container> {/* loading 중이 아닐 때 */}
         {nowPlaying && nowPlaying.length > 0 && (
             <Section title="Now Playing">
-                {nowPlaying.map(movie => movie.title)}
+                {nowPlaying.map(movie => (
+                    <span key={movie.id}>{movie.title}</span>
+                ))}
             </Section>
         )}
         {upcoming && upcoming.length > 0 && (
             <Section title="upcoming">
-                {upcoming.map(movie => movie.title)}
+                {upcoming.map(movie => (
+                    <span key={movie.id}>{movie.title}</span>
+                ))}
             </Section>
         )}
         {popular && popular.length > 0 && (
             <Section title="popular">
-                {popular.map(movie => movie.title)}
+                {popular.map(movie => (
+                    <span key={movie.id}>{movie.title}</span>
+                ))}
             </Section>
         )}
     </Container>
