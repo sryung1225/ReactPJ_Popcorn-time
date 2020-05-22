@@ -11,12 +11,22 @@ export default class extends React.Component {
         error: null
     };
 
-    handleSubmit = () => { // 검색어를 제출하는 함수
+    handleSubmit = event => { // 검색어를 제출하는 함수
+        event.preventDefault(); // enter누르면 제출과 동시에 새로고침 돼 state 잃어버리는 현상(이벤트) 방지
         const { searchTerm } = this.state;
         if (searchTerm !== "") {
             this.searchByTerm();
         }
     }; 
+
+    updateTerm = event => {
+        const {
+            target: { value }
+        } = event;
+        this.setState({
+            searchTerm: value
+        });
+    };
 
     searchByTerm = async() => {
         const { searchTerm } = this.state;
@@ -49,6 +59,7 @@ export default class extends React.Component {
                 loading={loading}
                 error={error}
                 handleSubmit={this.handleSubmit}
+                updateTerm={this.updateTerm}
             />
         );
     }
